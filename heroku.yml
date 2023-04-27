@@ -1,0 +1,36 @@
+# MA VERSION
+
+setup:
+  config:
+    APP_NAME: heroku-oc-projet-baptiste
+build:
+  docker:
+    web: Dockerfile
+run:
+  web: gunicorn oc_lettings_site.wsgi:application --bind 0.0.0.0:$PORT
+
+
+# TROUVE DANS LE NOUVEAU TUTORIAL
+
+#build:
+#  docker:
+#    web: Dockerfile
+#run:
+#  web: gunicorn hello_django.wsgi:application --bind 0.0.0.0:$PORT
+
+
+# VERSION DU TUTORIAL PRECEDENT
+
+#setup:
+#  addons:
+#    - plan: heroku-redis
+#      as: REDIS
+#  config:
+#    APP_NAME: heroku-dockerize
+#build:
+#  docker:
+#    web: Dockerfile
+#  config:
+#    NODE_ENV: production
+#run:
+#  web: npm start

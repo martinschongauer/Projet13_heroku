@@ -1,0 +1,6 @@
+bs4==0.0.1
+Django==3.0
+flake8==3.7.0
+pytest-django==3.9.0
+six==1.16.0
+whitenoise==6.4.0
