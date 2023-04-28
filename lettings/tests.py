@@ -6,7 +6,7 @@ from lettings.models import Address, Letting
 
 @pytest.mark.django_db
 def test_lettings_main_page(client):
-    response = client.get(reverse('lettings_index'))
+    response = client.get(reverse('lettings:index'))
     assert response.status_code == 200
     assert b'<h1>Lettings</h1>' in response.content
 
@@ -26,7 +26,7 @@ def test_lettings_detail_page(client):
                            )
 
     # Lettings main page
-    response = client.get(reverse('lettings_index'))
+    response = client.get(reverse('lettings:index'))
     assert response.status_code == 200
 
     # Get all links in the page - first one should point to our object

@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 @pytest.mark.django_db
 def test_profiles_main_page(client):
-    response = client.get(reverse('profiles_index'))
+    response = client.get(reverse('profiles:index'))
     assert response.status_code == 200
     assert b'<h1>Profiles</h1>' in response.content
 
@@ -23,7 +23,7 @@ def test_profiles_detail_page(client):
                            )
 
     # Profiles main page
-    response = client.get(reverse('profiles_index'))
+    response = client.get(reverse('profiles:index'))
     assert response.status_code == 200
 
     # Get all links in the page - first one should point to the user profile
