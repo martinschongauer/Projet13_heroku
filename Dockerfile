@@ -11,8 +11,6 @@ ENV DEBUG 0
 
 ARG secret_key_arg
 ARG sentry_addr_arg
-ENV SECRET_KEY $secret_key_arg
-ENV SENTRY_ADDR $sentry_addr_arg
 
 # # install psycopg2
 # RUN apk update \
@@ -28,6 +26,8 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # collect static files
+RUN dotenv set SECRET_KEY $secret_key_arg
+RUN dotenv set SENTRY_ADDR $sentry_addr_arg
 RUN python manage.py collectstatic --noinput
 
 # add and run as non-root user
