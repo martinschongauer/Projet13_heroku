@@ -11,9 +11,10 @@ jobs:
     docker:
       - image: cimg/python:3.10.2
         environment:
-          SECRET_KEY: <%= ENV['SECRET_KEY'] %>
-          SENTRY_ADDR: <%= ENV['SENTRY_ADDR'] %>
+          SECRET_KEY: $SECRET_KEY
+          SENTRY_ADDR: $SENTRY_ADDR
     steps:
+      - run: sh -c env
       - checkout
       - python/install-packages:
           pkg-manager: pip
