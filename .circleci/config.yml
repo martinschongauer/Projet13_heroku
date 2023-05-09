@@ -10,9 +10,6 @@ jobs:
   build-and-test:
     docker:
       - image: cimg/python:3.10.2
-        environment:
-          SECRET_KEY: $SECRET_KEY
-          SENTRY_ADDR: $SENTRY_ADDR
     steps:
       - run: sh -c env
       - checkout
@@ -26,7 +23,7 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build -t heroku-oc-baptiste-dockerize:circleci .
+            docker build -t heroku-oc-baptiste-dockerize:circleci --build-arg secret_key_arg=$SECRET_KEY sentry_addr_arg=$SENTRY_ADDR .
             docker images
 
   deploy:
