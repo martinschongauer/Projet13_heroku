@@ -9,6 +9,11 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV DEBUG 0
 
+ARG secret_key_arg
+ARG sentry_addr_arg
+ENV SECRET_KEY $secret_key_arg
+ENV SENTRY_ADDR $sentry_addr_arg
+
 # # install psycopg2
 # RUN apk update \
 #     && apk add --virtual build-essential gcc python3-dev musl-dev \
