@@ -9,6 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV DEBUG 0
 
+# Env. variables used to hide infos in GitHub
 ARG secret_key_arg
 ARG sentry_addr_arg
 
@@ -25,9 +26,11 @@ RUN pip install -r requirements.txt
 # copy project
 COPY . .
 
+# store env. variables in the dedicated local file
+RUN echo "SECRET_KEY=$secret_key_arg" >> .env
+RUN echo "SENTRY_ADDR=$sentry_addr_arg" >> .env
+
 # collect static files
-RUN dotenv set SECRET_KEY $secret_key_arg
-RUN dotenv set SENTRY_ADDR $sentry_addr_arg
 RUN python manage.py collectstatic --noinput
 
 # add and run as non-root user
