@@ -10,6 +10,9 @@ jobs:
   build-and-test:
     docker:
       - image: cimg/python:3.10.2
+        auth:
+          username: DOCKER_LOGIN
+          password: DOCKER_PASSWORD
     steps:
       - run: sh -c env
       - checkout
