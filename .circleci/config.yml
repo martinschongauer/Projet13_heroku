@@ -26,7 +26,7 @@ jobs:
       - run:
           name: Build Docker image
           command: |
-            docker build -t heroku-oc-baptiste-dockerize:circleci .
+            docker build -t heroku-oc-projet-baptiste:circleci .
             docker images
 
   deploy:
@@ -43,6 +43,8 @@ jobs:
       - run:
           name: Pushing to heroku registry
           command: |
+            heroku config:set SECRET_KEY=$SECRET_KEY -a heroku-oc-projet-baptiste
+            heroku config:set SENTRY_ADDR=$SENTRY_ADDR -a heroku-oc-projet-baptiste
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
 workflows:
