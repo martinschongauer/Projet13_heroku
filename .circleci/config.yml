@@ -45,6 +45,7 @@ jobs:
           command: |
             heroku config:set SECRET_KEY=$SECRET_KEY -a heroku-oc-projet-baptiste
             heroku config:set SENTRY_ADDR=$SENTRY_ADDR -a heroku-oc-projet-baptiste
+            heroku config:set PORT=8765 -a heroku-oc-projet-baptiste
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
 workflows:
