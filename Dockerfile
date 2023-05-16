@@ -9,6 +9,9 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 ENV DEBUG 0
 
+# Env. variables defined as arguments
+ARG SECRET_KEY=${SECRET_KEY}
+
 # # install psycopg2
 # RUN apk update \
 #     && apk add --virtual build-essential gcc python3-dev musl-dev \
