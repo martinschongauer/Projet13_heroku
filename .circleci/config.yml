@@ -22,6 +22,10 @@ jobs:
       - setup_remote_docker:
           version: 18.06.0-ce
       - run:
+          name: DEBUG print env variable
+          command:
+            echo $SECRET_KEY
+      - run:
           name: Build Docker image
           command: |
             docker build -t heroku-oc-baptiste-dockerize:circleci .
