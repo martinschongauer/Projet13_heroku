@@ -10,7 +10,7 @@ ENV PYTHONUNBUFFERED 1
 ENV DEBUG 0
 
 # Env. variables defined as arguments
-ARG SECRET_KEY=${SECRET_KEY}
+ENV SECRET_KEY ${SECRET_KEY}
 
 # # install psycopg2
 # RUN apk update \
