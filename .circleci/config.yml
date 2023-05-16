@@ -21,9 +21,6 @@ jobs:
           command: pytest
       - setup_remote_docker:
           version: 18.06.0-ce
-      -run:
-        name: "Affichage DEBUG"
-        command: echo $SECRET_KEY
       - run:
           name: Build Docker image
           command: |
@@ -61,5 +58,3 @@ workflows:
             branches:
               only:
                 - master
-
-
