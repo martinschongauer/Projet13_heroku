@@ -10,13 +10,8 @@ ENV PYTHONUNBUFFERED 1
 ENV DEBUG 0
 
 # Env. variables defined as arguments
-ENV SECRET_KEY ${SECRET_KEY}
-
-# # install psycopg2
-# RUN apk update \
-#     && apk add --virtual build-essential gcc python3-dev musl-dev \
-#     && apk add postgresql-dev \
-#     && pip install psycopg2
+ARG arg_secret_key
+ENV SECRET_KEY=$arg_secret_key
 
 # install dependencies
 COPY ./requirements.txt .
