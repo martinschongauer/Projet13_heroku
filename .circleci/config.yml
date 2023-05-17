@@ -49,6 +49,8 @@ jobs:
             #   HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a ${HEROKU_APP_NAME} web
             pwd
             ls ./
+            sed -i "s|os.getenv('SECRET_KEY')|$SECRET_KEY|g" ./oc_lettings_site/settings.py
+            cat ./oc_lettings_site/settings.py | head -n 40
             git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
 workflows:
