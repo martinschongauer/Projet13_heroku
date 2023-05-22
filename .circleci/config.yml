@@ -7,7 +7,7 @@ orbs:
   heroku: circleci/heroku@1.0.1
 
 jobs:
-  build-and-test:
+  build-and-tests:
     docker:
       - image: cimg/python:3.10.2
     steps:
