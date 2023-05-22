@@ -26,8 +26,8 @@ jobs:
       - setup_remote_docker:
           docker_layer_caching: true
       - run:
-        name: Build Docker image
-        command: docker build --build-arg arg_secret_key=SECRET_KEY -t docker-oc-lettings:circleci .
+          name: Build Docker image
+          command: docker build --build-arg arg_secret_key=SECRET_KEY -t docker-oc-lettings:circleci .
       - run:
           name: See Docker images
           command: docker images
