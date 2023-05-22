@@ -29,17 +29,17 @@ jobs:
         name: Build Docker image
         command: docker build --build-arg arg_secret_key=SECRET_KEY -t docker-oc-lettings:circleci .
       - run:
-        name: See Docker images
-        command: docker images
+          name: See Docker images
+          command: docker images
       - run:
-        name: Login to DockerHub
-        command: docker login --username $DOCKER_LOGIN --password $DOCKER_PASSWORD
+          name: Login to DockerHub
+          command: docker login --username $DOCKER_LOGIN --password $DOCKER_PASSWORD
       - run:
-        name: Link to DockerHub
-        command: docker tag docker-oc-lettings:0.1 $DOCKER_LOGIN/oc-lettings-site:$CIRCLE_SHA1
+          name: Link to DockerHub
+          command: docker tag docker-oc-lettings:0.1 $DOCKER_LOGIN/oc-lettings-site:$CIRCLE_SHA1
       - run:
-        name: push Docker image
-        command: docker push $DOCKER_LOGIN/oc-lettings-site:$CIRCLE_SHA1
+          name: push Docker image
+          command: docker push $DOCKER_LOGIN/oc-lettings-site:$CIRCLE_SHA1
 
   deploy-heroku:
     machine: true
