@@ -11,9 +11,9 @@ ENV PYTHONUNBUFFERED 1
 ENV DEBUG 0
 
 # Env. variables defined as arguments
-ARG arg_secret_key
+ARG secret_key_arg
 ARG sentry_addr_arg
-ENV SECRET_KEY=$arg_secret_key
+ENV SECRET_KEY=$secret_key_arg
 ENV SENTRY_ADDR=$sentry_addr_arg
 
 # install dependencies
