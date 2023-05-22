@@ -12,12 +12,18 @@ ENV DEBUG 0
 
 # Env. variables defined as arguments
 ARG arg_secret_key
+ARG sentry_addr_arg
 ENV SECRET_KEY=$arg_secret_key
+ENV SECRET_KEY=$sentry_addr_arg
 
 # install dependencies
 COPY ./requirements.txt /app/
 RUN pip install -r requirements.txt
 EXPOSE 8000
+
+# store env. variables in the dedicated local file
+RUN echo "SECRET_KEY=$secret_key_arg" >> .env
+RUN echo "SENTRY_ADDR=$sentry_addr_arg" >> .env
 
 # copy project
 COPY . /app/
