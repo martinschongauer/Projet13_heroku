@@ -36,7 +36,7 @@ jobs:
           command: docker login --username $DOCKER_LOGIN --password $DOCKER_PASSWORD
       - run:
           name: Link to DockerHub
-          command: docker tag docker-oc-lettings:0.1 $DOCKER_LOGIN/oc-lettings-site:$CIRCLE_SHA1
+          command: docker tag docker-oc-lettings:circleci $DOCKER_LOGIN/oc-lettings-site:$CIRCLE_SHA1
       - run:
           name: push Docker image
           command: docker push $DOCKER_LOGIN/oc-lettings-site:$CIRCLE_SHA1
