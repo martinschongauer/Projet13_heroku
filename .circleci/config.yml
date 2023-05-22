@@ -40,27 +40,13 @@ jobs:
       - run:
           name: push Docker image
           command: docker push $DOCKER_LOGIN/oc-lettings-site:$CIRCLE_SHA1
-
-  deploy-heroku:
-    machine: true
-    steps:
-      - checkout
       - run:
-          name: Storing previous commit
+          name: Upload to Heroku
           command: |
-            git rev-parse HEAD > ./commit.txt
-      - heroku/install
-      - run:
-          name: Pushing to heroku registry
-          command: |
+            docker tag docker-oc-lettings:circleci registry.heroku.com/${HEROKU_APP_NAME}/web:latest
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:login
-            HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:push -a ${HEROKU_APP_NAME} web
+            HEROKU_API_KEY=${HEROKU_TOKEN} docker push registry.heroku.com/${HEROKU_APP_NAME}/web:latest
             HEROKU_API_KEY=${HEROKU_TOKEN} heroku container:release -a ${HEROKU_APP_NAME} web
-            #   pwd
-            #   ls ./
-            #   sed -i "s|os.getenv('SECRET_KEY')|'$(echo $SECRET_KEY | sed 's/&/\\&/g')'|g" ./oc_lettings_site/settings.py
-            #   cat ./oc_lettings_site/settings.py | head -n 40
-            #   git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
 workflows:
   build-test-deploy:
@@ -72,9 +58,3 @@ workflows:
               only: master
           requires:
             - build-and-tests
-      - deploy-heroku:
-          filters:
-            branches:
-              only: master
-          requires:
-            - build-and-push-dockerhub
