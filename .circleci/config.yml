@@ -41,6 +41,11 @@ jobs:
           name: push Docker image
           command: docker push $DOCKER_LOGIN/oc-lettings-site:$CIRCLE_SHA1
       - run:
+          name: Storing previous commit
+          command: |
+            git rev-parse HEAD > ./commit.txt
+      - heroku/install
+      - run:
           name: Upload to Heroku
           command: |
             docker tag docker-oc-lettings:circleci registry.heroku.com/${HEROKU_APP_NAME}/web:latest
