@@ -14,7 +14,7 @@ ENV DEBUG 0
 ARG arg_secret_key
 ARG sentry_addr_arg
 ENV SECRET_KEY=$arg_secret_key
-ENV SECRET_KEY=$sentry_addr_arg
+ENV SENTRY_ADDR=$sentry_addr_arg
 
 # install dependencies
 COPY ./requirements.txt /app/
