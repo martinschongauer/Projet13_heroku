@@ -7,8 +7,8 @@ load_dotenv()
 
 
 sentry_sdk.init(
-    dsn='https://590f572c8b864d37a27824b36d341fca@o4505132756697088.ingest.sentry.io/4505132767313920',
-    # os.getenv('SENTRY_ADDR'),
+    dsn=os.getenv('SENTRY_ADDR'),
+    # 'https://590f572c8b864d37a27824b36d341fca@o4505132756697088.ingest.sentry.io/4505132767313920',
     integrations=[
         DjangoIntegration(),
     ],
