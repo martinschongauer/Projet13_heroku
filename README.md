@@ -141,7 +141,9 @@ Pour lancer l'image et voir les images qui sont en train de tourner:
 
 
 Dans la première commande, le nom du container fourni en paramètre peut être choisi librement tant qu'il n'a pas déjà été utilisé par un container précédant.
+
 -d sert à libérer le terminal et à faire tourner en arrière-plan ("detach")
+
 -p fixe le port local sur lequel le serveur sera accessible (premier paramètre). Le second numéro de port est choisi à la construction de l'image (ne pas modifier).
 
 Pour arrêter un container qui tourne:
