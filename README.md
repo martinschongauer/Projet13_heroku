@@ -105,6 +105,7 @@ L'utilisation de ces sites est intuitive et ne demande pas d'explications partic
 
 On peut donner plus de détails sur la manière dont l'image générée par le pipeline et stockée sur le compte DockerHub peut être récupérée et manipulée en local.
 Une fois connecté au site internet:
+
 https://hub.docker.com/
 
 Aller dans l'application, puis sur la page de l'image que l'on souhaite récupérer. Copier le titre de la page qui est le tag complet de l'image.
@@ -115,15 +116,18 @@ Sous Linux (avec l'utilisateur root) se logger à DockerHub:
 Pour récupérer l'image:
 
 `docker login --username <login> --password <pass>`
+
 `docker pull <tag_image>`
 
 Pour voir les images présentes en local et les supprimer lorsqu'elles ne sont plus nécessaires:
 
 `docker images`
+
 `docker rmi <tag_image>`
 
 Pour lancer l'image et voir les images qui sont en train de tourner:
 `docker run --name django-test -d -p 8000:8000 <tag_image>`
+
 `docker ps`
 
 Dans la première commande, le nom du container fourni en paramètre peut être choisi librement tant qu'il n'a pas déjà été utilisé par un container précédant.
