@@ -161,4 +161,5 @@ On pourra alors visiter le site à l'adresse suivante:
 http://127.0.0.1:8000/
 
 Et déclencher une erreur de division par zéro à l'adresse suivante, pour tester Sentry:
+
 http://127.0.0.1:8000/sentry-debug
