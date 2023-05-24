@@ -96,10 +96,14 @@ SENTRY_ADDR	: L'adresse HTTP à laquelle le module sentry se connecte pour enreg
 Ces variables d'environnement contiennent des données trop sensibles pour être stockées en clair sur GitHub, même sur un dépôt privé.
 
 La création et la gestion d'une application Heroku se fait directement sur le portail web de l'hébergeur, à l'adresse:
+
 https://id.heroku.com/login
 
+
 Il en est de même de la capture des erreurs via le portail web de Sentry:
+
 https://blog.sentry.io/monitoring-performance-and-errors-in-a-django-application-with-sentry/
+
 
 L'utilisation de ces sites est intuitive et ne demande pas d'explications particulières. Il est possible d'utiliser un client en ligne de commande pour gérer les applications Heroku, mais ce n'est absolument pas nécessaire pour commencer.
 
@@ -108,10 +112,12 @@ Une fois connecté au site internet:
 
 https://hub.docker.com/
 
+
 Aller dans l'application, puis sur la page de l'image que l'on souhaite récupérer. Copier le titre de la page qui est le tag complet de l'image.
 Sous Linux (avec l'utilisateur root) se logger à DockerHub:
 
 `docker login --username <login> --password <pass>`
+
 
 Pour récupérer l'image:
 
@@ -119,31 +125,40 @@ Pour récupérer l'image:
 
 `docker pull <tag_image>`
 
+
 Pour voir les images présentes en local et les supprimer lorsqu'elles ne sont plus nécessaires:
 
 `docker images`
 
 `docker rmi <tag_image>`
 
+
 Pour lancer l'image et voir les images qui sont en train de tourner:
+
 `docker run --name django-test -d -p 8000:8000 <tag_image>`
 
 `docker ps`
+
 
 Dans la première commande, le nom du container fourni en paramètre peut être choisi librement tant qu'il n'a pas déjà été utilisé par un container précédant.
 -d sert à libérer le terminal et à faire tourner en arrière-plan ("detach")
 -p fixe le port local sur lequel le serveur sera accessible (premier paramètre). Le second numéro de port est choisi à la construction de l'image (ne pas modifier).
 
 Pour arrêter un container qui tourne:
+
 `docker stop <image_ID>`
+
 
 On peut voir l'ensemble des containers qui ont tourné (incluant ceux qui ont été arrêtés) et supprimer les anciens containers:
 
 `docker ps -a`
+
 `docker rm <container_ID>`
 
+
 On pourra alors visiter le site à l'adresse suivante:
-127.0.0.1:8000/
+
+http://127.0.0.1:8000/
 
 Et déclencher une erreur de division par zéro à l'adresse suivante, pour tester Sentry:
-127.0.0.1:8000/sentry-debug
+http://127.0.0.1:8000/sentry-debug
