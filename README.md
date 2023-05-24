@@ -121,8 +121,6 @@ Sous Linux (avec l'utilisateur root) se logger à DockerHub:
 
 Pour récupérer l'image:
 
-`docker login --username <login> --password <pass>`
-
 `docker pull <tag_image>`
 
 
