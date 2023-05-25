@@ -12,7 +12,7 @@ class Address(models.Model):
 
     def __str__(self):
         return f'{self.number} {self.street}'
-    
+
     class Meta:
         verbose_name_plural = "Adresses"
 
